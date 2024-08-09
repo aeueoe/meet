@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const CitySearch = ({ allLocations }) => {
+const CitySearch = ({ allLocations, setCurrentCity }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   //Add a new state for the input field so that the value can be accessed
   const [query, setQuery] = useState("");
   // Add a new state which will hold the list of suggestions
   const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    setSuggestions(allLocations);
+  }, [`${allLocations}`]); // `${allLocations}` -strigified value of the prop
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
@@ -14,15 +18,14 @@ const CitySearch = ({ allLocations }) => {
           return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
         })
       : [];
-
     setQuery(value);
     setSuggestions(filteredLocations);
   };
-
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
     setQuery(value);
     setShowSuggestions(false); //to hide the list
+    setCurrentCity(value);
   };
 
   return (
@@ -52,5 +55,4 @@ const CitySearch = ({ allLocations }) => {
     </div>
   );
 };
-
 export default CitySearch;
