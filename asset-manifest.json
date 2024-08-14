@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/aeueoe/meet/static/css/main.f855e6bc.css",
+    "main.js": "/aeueoe/meet/static/js/main.3fe0c74e.js",
+    "static/js/453.4a9980c6.chunk.js": "/aeueoe/meet/static/js/453.4a9980c6.chunk.js",
+    "service-worker.js": "/aeueoe/meet/service-worker.js",
+    "static/media/logo.svg": "/aeueoe/meet/static/media/logo.2d27ead7c10f774c5306bcf3c257a728.svg",
+    "index.html": "/aeueoe/meet/index.html",
+    "main.f855e6bc.css.map": "/aeueoe/meet/static/css/main.f855e6bc.css.map",
+    "main.3fe0c74e.js.map": "/aeueoe/meet/static/js/main.3fe0c74e.js.map",
+    "453.4a9980c6.chunk.js.map": "/aeueoe/meet/static/js/453.4a9980c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.3fe0c74e.js"
+  ]
+}
