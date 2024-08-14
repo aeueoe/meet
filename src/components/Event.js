@@ -8,11 +8,11 @@ const Event = ({ event }) => {
       <li>
         <div>
           <h2>{event.summary}</h2>
-          <p>{event.created}</p>
-          <p>{event.location}</p>
+          <p className="location">{event.created}</p>
+          <p className="location">{event.location}</p>
           {toggle ? (
             <>
-              <p>{event.description}</p>
+              <p className="eventDetails">{event.description}</p>
               <button id="hide-details" onClick={() => setToggle(false)}>
                 {" "}
                 Hide details{" "}
