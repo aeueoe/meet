@@ -1,5 +1,5 @@
 import mockData from "./mock-data";
-
+import NProgress from "nprogress";
 /**
  *
  *@param {*} events:
@@ -7,13 +7,11 @@ import mockData from "./mock-data";
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
  */
-
 export const extractLocations = (events) => {
   const extractedLocations = events.map((event) => event.location);
   const locations = [...new Set(extractedLocations)];
   return locations;
 };
-
 const checkToken = async (accessToken) => {
   const response = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
@@ -21,12 +19,15 @@ const checkToken = async (accessToken) => {
   const result = await response.json();
   return result;
 };
-
 // This function will fetch the list of all events
-
 export const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost")) {
     return mockData;
+  }
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return events ? JSON.parse(events) : [];
   }
 
   const token = await getAccessToken();
@@ -39,6 +40,8 @@ export const getEvents = async () => {
     const response = await fetch(url);
     const result = await response.json();
     if (result) {
+      NProgress.done();
+      localStorage.setItem("lastEvents", JSON.stringify(result.events));
       return result.events;
     } else return null;
   }
@@ -63,7 +66,6 @@ export const getAccessToken = async () => {
   }
   return accessToken;
 };
-
 const removeQuery = () => {
   let newurl;
   if (window.history.pushState && window.location.pathname) {
@@ -78,7 +80,6 @@ const removeQuery = () => {
     window.history.pushState("", "", newurl);
   }
 };
-
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
@@ -88,6 +89,5 @@ const getToken = async (code) => {
   );
   const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
-
   return access_token;
 };

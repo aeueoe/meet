@@ -1,14 +1,22 @@
 import { useState } from "react";
 
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
   //Add a new state for the input field so that the value can be accessed
   const [query, setQuery] = useState(32);
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
     setQuery(value);
-    setCurrentNOE(value);
+    let infoText;
+    if (isNaN(value) || value <= 0) {
+      infoText = "Please enter a valid number.";
+    } else {
+      infoText = "";
+      setCurrentNOE(value);
+    }
+    setErrorAlert(infoText);
   };
+
   return (
     <>
       <h3> Number of events:</h3>

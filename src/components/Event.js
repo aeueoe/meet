@@ -7,7 +7,7 @@ const Event = ({ event }) => {
     <>
       <li>
         <div>
-          <h2>{event.summary}</h2>
+          <h3>{event.summary}</h3>
           <p className="location">{event.created}</p>
           <p className="location">{event.location}</p>
           {toggle ? (
