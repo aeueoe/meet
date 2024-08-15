@@ -13,26 +13,26 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     setSuggestions(allLocations);
   }, [`${allLocations}`]); // `${allLocations}` -strigified value of the prop
 
- const handleInputChanged = (event) => {
-   const value = event.target.value;
-   const filteredLocations = allLocations
-     ? allLocations.filter((location) => {
-         return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-       })
-     : [];
+  const handleInputChanged = (event) => {
+    const value = event.target.value;
+    const filteredLocations = allLocations
+      ? allLocations.filter((location) => {
+          return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+        })
+      : [];
 
-   setQuery(value);
-   setSuggestions(filteredLocations);
+    setQuery(value);
+    setSuggestions(filteredLocations);
 
-   let infoText;
-   if (filteredLocations.length === 0) {
-     infoText =
-       "We can not find the city you are looking for. Please try another city.";
-   } else {
-     infoText = "";
-   }
-   setInfoAlert(infoText);
- };
+    let infoText;
+    if (filteredLocations.length === 0) {
+      infoText =
+        "We can not find the city you are looking for. Please try another city.";
+    } else {
+      infoText = "";
+    }
+    setInfoAlert(infoText);
+  };
 
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
@@ -44,7 +44,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
 
   return (
     <div id="city-search">
-      <img className="logo" src={Logo} alt="Logo" width="100" height="100" />
+      <img className="logo" src={Logo} alt="Logo" />
       <input
         type="text"
         className="city"
