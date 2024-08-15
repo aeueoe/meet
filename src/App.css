@@ -214,8 +214,8 @@ h3 {
   }
 
   .logo {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
   }
 
   .city,
@@ -226,8 +226,12 @@ h3 {
 
   #show-details,
   #hide-details {
-    font-size: 12px;
-    padding: 6px 12px;
+    font-size: 14px;
+    padding: 8px 14px;
     margin: 6px;
+  }
+  .eventDetails {
+    font-size: 14px;
+    padding: 10px 0;
   }
 }
