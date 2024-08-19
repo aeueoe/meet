@@ -16,7 +16,7 @@ body {
 }
 
 .App {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 8px;
@@ -98,7 +98,7 @@ body {
 
 h3 {
   margin-top: 20px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--primary-color);
 }
 
@@ -167,6 +167,11 @@ h3 {
   z-index: 1000;
 }
 
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 /* Responsive images */
 
 .logo img {
@@ -205,6 +210,9 @@ h3 {
     padding: 8px 16px;
     margin: 8px;
   }
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -233,5 +241,8 @@ h3 {
   .eventDetails {
     font-size: 14px;
     padding: 10px 0;
+  }
+  .alerts-container {
+    width: 250px;
   }
 }

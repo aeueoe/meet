@@ -6,7 +6,7 @@ const Event = ({ event }) => {
   return (
     <>
       <li>
-        <div>
+        <div className="details-container">
           <h3>{event.summary}</h3>
           <p className="location">{event.created}</p>
           <p className="location">{event.location}</p>

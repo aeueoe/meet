@@ -1,4 +1,7 @@
 import "@testing-library/jest-dom";
+const { ResizeObserver } = window;
+
+jest.setTimeout(30000);
 
 const MESSAGES_TO_IGNORE = [
   "When testing, code that causes React state updates should be wrapped into act(...):",
@@ -15,4 +18,17 @@ console.error = (...args) => {
   if (!ignoreMessage) originalError(...args);
 };
 
-jest.setTimeout(30000);
+beforeEach(() => {
+  //@ts-ignore
+  delete window.ResizeObserver;
+  window.ResizeObserver = jest.fn().mockImplementation(() => ({
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+    disconnect: jest.fn(),
+  }));
+});
+
+afterEach(() => {
+  window.ResizeObserver = ResizeObserver;
+  jest.restoreAllMocks();
+});
